@@ -1,4 +1,4 @@
-#indef VECTORED_H
+#ifndef VECTORED_H
 #define VECTORED_H
 
 #include <iostream>
@@ -9,6 +9,7 @@ class vectored
  private:
   int* vec_ptr;
   int vec_size;
+  int vec_capacity;
   
  public:
   Vector();
