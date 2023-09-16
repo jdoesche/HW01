@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-#include "Vectored.h"
+#include "Vector.h"
 
 int main()
 {
@@ -10,7 +10,7 @@ int main()
   int emex = 0;
   int MX = 32 - 1;
   char func;
-  Vectored v;
+  Vector v;
 
   cout << "Please enter an operation . . ." << endl;
   cout << "  (You can always type '?' for help, or 'x' to close the program) " << endl;

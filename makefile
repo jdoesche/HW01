@@ -1,16 +1,16 @@
 CC = g++
 CFLAGS = -g -Wall -Wextra
 
-default: vectored
+default: vector
 
-vectored:		Vectored.o main.o
-	$(CC) $(CFLAGS) -o vectored Vectored.o main.o
+vector:		Vector.o main.o
+	$(CC) $(CFLAGS) -o vector Vector.o main.o
 
-Vectored.o:	Vectored.cpp Vectored.h
-	$(CC) $(CFLAGS) -c Vectored.cpp
+Vector.o:	Vector.cpp Vector.h
+	$(CC) $(CFLAGS) -c Vector.cpp
 
-main.o:	main.cpp Vectored.h
+main.o:	main.cpp Vector.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 clean:
-	$(RM) vectored *.o *~
+	$(RM) vector *.o *~

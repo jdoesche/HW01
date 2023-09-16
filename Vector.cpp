@@ -1,45 +1,45 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-#include "Vectored.h"
+#include "Vector.h"
 
-vectored::Vector()
-  :vec_ptr = NULL
+Vector::Vector()
+  :vec_ptr(NULL)
 {}
 
-vectored::Vector(const Vector &other)
+Vector::Vector(const Vector &other)
 {
- vec_ptr = new int[vec_capacity]
+  vec_ptr = new int[vec_capacity];
 }
 
-vectored::~Vector()
+Vector::~Vector()
 {
   delete[] vec_ptr;
   vec_capacity = 4;
   vec_size = 0;
 }
 
-vectored::Vector& operator=(const Vector &other)
+Vector::Vector& operator=(const Vector &other)
 {
   int i = 0;
   while (i < vec_size)
     {
-      other.Vector[i] = Vector[i];
+      other.vec_ptr[i] = vec_ptr[i];
       i++;
     }
 }
 
-int vectored::size()
+int Vector::size()
 {
   return vec_size;
 }
 
-int vectored::capacity()
+int Vector::capacity()
 {
   return vec_capacity;
 }
 
-void vectored::push_back(int element)
+void Vector::push_back(int element)
 {
   if (vec_size + 1 >= vec_capacity)
     reserve();
@@ -52,7 +52,7 @@ void vectored::push_back(int element)
   vec_capacity++;
 }
 
-void vectored::reserve() //aka void vectored::PANIC!!!()
+void Vector::reserve() //aka void vectored::PANIC!!!()
 {
   int tarr[vec_size];
   int tstore = vec_capacity;
@@ -75,7 +75,7 @@ void vectored::reserve() //aka void vectored::PANIC!!!()
     }  
 }
 
-vectored::int& operator[](unsigned int index)
+Vector::int& operator[](unsigned int index)
 {
-  return &vec_ptr[i]
+  return vec_ptr[index];
 }

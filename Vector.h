@@ -1,10 +1,10 @@
-#ifndef VECTORED_H
-#define VECTORED_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include <iostream>
 using namespace std;
 
-class vectored
+class Vector
 {
  private:
   int* vec_ptr;
@@ -12,6 +12,7 @@ class vectored
   int vec_capacity = 4;
   
  public:
+  //Dynamic Arrays
   Vector();
   Vector(const Vector &other);
   ~Vector();
@@ -22,4 +23,5 @@ class vectored
   void push_back(int element);
   void reserve();
   int& operator[](unsigned int index);
-}
+};
+#endif //Vector.h
