@@ -5,10 +5,7 @@ using namespace std;
 
 vectored::Vector()
   :vec_ptr = NULL
-{
-  vec_size = 0;
-  vec_capacity = 4;
-}
+{}
 
 vectored::Vector(const Vector &other)
 {
@@ -18,8 +15,8 @@ vectored::Vector(const Vector &other)
 vectored::~Vector()
 {
   delete[] vec_ptr;
-  vec_size = 0;
   vec_capacity = 4;
+  vec_size = 0;
 }
 
 vectored::Vector& operator=(const Vector &other)
@@ -49,9 +46,10 @@ void vectored::push_back(int element)
   i = vec_size - 1;
   while (i > element)
     {
-      vector[i] = vec_ptr[i - 1];
+      vec_ptr[i] = vec_ptr[i - 1];
       i--;
     }
+  vec_capacity++;
 }
 
 void vectored::reserve() //aka void vectored::PANIC!!!()
@@ -66,9 +64,9 @@ void vectored::reserve() //aka void vectored::PANIC!!!()
     }
 
   ~Vector();
-  Vector();
   int vec_capacity = tstore * 2;
-
+  Vector();
+ 
   i = 0;
   while (i < vec_size)
     {
@@ -79,5 +77,5 @@ void vectored::reserve() //aka void vectored::PANIC!!!()
 
 vectored::int& operator[](unsigned int index)
 {
-  
+  return &vec_ptr[i]
 }

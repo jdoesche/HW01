@@ -8,8 +8,8 @@ class vectored
 {
  private:
   int* vec_ptr;
-  int vec_size;
-  int vec_capacity;
+  int vec_size = 0;
+  int vec_capacity = 4;
   
  public:
   Vector();
