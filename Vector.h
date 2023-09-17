@@ -14,7 +14,7 @@ class Vector
  public:
   //Dynamic Arrays
   Vector();
-  Vector(const Vector &other);
+  Vector(const Vector &other); //This function may need to be modified
   ~Vector();
   Vector& operator=(const Vector &other);
 
@@ -22,6 +22,8 @@ class Vector
   int capacity();
   void push_back(int element);
   void reserve();
+  void print(int n);
   int& operator[](unsigned int index);
+  void deflt();
 };
 #endif //Vector.h

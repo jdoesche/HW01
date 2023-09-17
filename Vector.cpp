@@ -3,53 +3,59 @@ using namespace std;
 #include <fstream>
 #include "Vector.h"
 
-Vector::Vector()
+Vector::Vector() //Create da Vector
   :vec_ptr(NULL)
 {}
 
-Vector::Vector(const Vector &other)
+Vector::Vector(const Vector &other) //"Copy Constructor"
 {
-  vec_ptr = new int[vec_capacity];
+  int i = 0;
+  while (i < vec_size)
+    {
+      vec_ptr[i] = other.vec_ptr[i];
+    }
 }
 
-Vector::~Vector()
+Vector::~Vector() //Delete da Vector
 {
   delete[] vec_ptr;
   vec_capacity = 4;
   vec_size = 0;
 }
 
-Vector::Vector& operator=(const Vector &other)
+Vector& Vector::operator=(const Vector &other)
 {
+  Vector a;
   int i = 0;
   while (i < vec_size)
     {
-      other.vec_ptr[i] = vec_ptr[i];
+      a[i] = other.vec_ptr[i];
       i++;
     }
+  return a;
 }
 
-int Vector::size()
+int Vector::size() //Return the Vector Size
 {
   return vec_size;
 }
 
-int Vector::capacity()
+int Vector::capacity() //Return the Vector Capacity
 {
   return vec_capacity;
 }
 
-void Vector::push_back(int element)
+void Vector::push_back(int element) // ROLL IT BACK
 {
   if (vec_size + 1 >= vec_capacity)
     reserve();
-  i = vec_size - 1;
+  int i = vec_size;
   while (i > element)
     {
       vec_ptr[i] = vec_ptr[i - 1];
       i--;
     }
-  vec_capacity++;
+  vec_size++;
 }
 
 void Vector::reserve() //aka void vectored::PANIC!!!()
@@ -63,19 +69,45 @@ void Vector::reserve() //aka void vectored::PANIC!!!()
       i++;
     }
 
-  ~Vector();
-  int vec_capacity = tstore * 2;
+  delete[] vec_ptr;
+  vec_capacity = tstore * 2;
   Vector();
+  vec_ptr = new int[vec_capacity];
  
   i = 0;
   while (i < vec_size)
     {
-      vector[i] = tarr[i];
+      vec_ptr[i] = tarr[i];
       i++;
     }  
 }
 
-Vector::int& operator[](unsigned int index)
+void Vector::print(int n)
+{
+  int i = 0;
+  while (i < vec_size)
+    {
+      cout << vec_ptr[i] << " ";
+      i++;
+      if (n != 0)	
+	if (i%n == 0)
+	  cout << endl;
+    }
+  cout << endl;
+}
+
+int& Vector::operator[](unsigned int index)
 {
   return vec_ptr[index];
+}
+
+void Vector::deflt()
+{
+  vec_ptr = new int[8];
+  vec_size = 4;
+  vec_capacity = 8;
+  vec_ptr[0] = 1;
+  vec_ptr[1] = 2;
+  vec_ptr[2] = 3;
+  vec_ptr[3] = 4;
 }
