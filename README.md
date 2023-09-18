@@ -7,3 +7,4 @@ HW01
 
 If you want to use a file, 3 files are provided for you to modify and use to your will:
   InFile1.txt, InFile2.txt, and InFile3.txt
+  Note that the files MUST end with a -1 (As that is the sentinal value)
