@@ -11,6 +11,7 @@ int main()
   cout << "Please select a setting " << endl
        << "  1 for Validity Test" << endl
        << "  2 for the assignment test" << endl
+       << "  3 for an [albeit slightly broken] copy test" << endl
        << "  M for Manual Modification of a Single Vector" << endl;
   char var;
   cin >> var;
@@ -56,6 +57,31 @@ int main()
       v.print(20);
       vscan(v);
       cout << endl;
+    }
+  else if (var == '3')
+    {
+      cout << "Copy function" << endl;
+      Vector t;
+      t.deflt();
+      v[0] = 256;
+      v[4] = 5;
+      v[5] = 6;
+      v[6] = 7;
+      v[7] = 8;
+      v.push_back(5);
+      v.push_back(2);
+      v[2] = 100;
+      v.print(0);
+      vscan(v);
+      t.print(0);
+      vscan(t);
+      cout << "V1 will now be copied to V2" << endl;
+      t = v;
+      v.print(0);
+      vscan(v);
+      t.print(0);
+      vscan(t);
+      cout << "task complete" << endl;
     }
   else if (var == 'M')
     {
@@ -139,34 +165,28 @@ int main()
 	      }
 	    int temporint = 0;
 	    int k = 0;
-	    cout << "Gucci 1" << endl;
 	    file >> v[0];
-	    cout << "Gucci 2" << endl;
 	    while (!file.eof()) //Copy the File to the Vector
 	      {
 		k++;
 		if (k < tcap)
 		  {
-		    cout << "Gucci 3 - " << k << endl;
 		    file >> temporint;
 		    if (temporint == -1)
 		      break;
 		    v[k] = temporint;
-		    cout << "Gucci 4" << k << endl;
 		  }
 		else
 		  {
-		    cout << "Gucci 5 " << k << endl;
 		    file >> temporint;
 		    if (temporint == -1)
 		      break;
 		    v.push_back(k - 1);
 		    v[k] = temporint;
-		    cout << "Gucci 6" << k << endl;
 		  }
-		cout << v[k] << " ";
 	      }
 	    file.close();
+	    cout << "Done" << endl;
 	  }
 	else if (var == 'M') //Modify
 	  {

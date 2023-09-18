@@ -13,6 +13,7 @@ Vector::Vector(const Vector &other) //"Copy Constructor"
   while (i < vec_size)
     {
       vec_ptr[i] = other.vec_ptr[i];
+      i++;
     }
 }
 
@@ -25,14 +26,17 @@ Vector::~Vector() //Delete da Vector
 
 Vector& Vector::operator=(const Vector &other)
 {
-  Vector a;
   int i = 0;
-  while (i < vec_size)
+  while (this->vec_capacity <= other.vec_size)
+    this->reserve();
+  while (i <= other.vec_size)
     {
-      a[i] = other.vec_ptr[i];
+      this->vec_ptr[i] = other.vec_ptr[i];
+      //if (other.vec_size + 2 >= this->vec_capacity)
+      //  this->reserve();
       i++;
     }
-  return a;
+  return *this;
 }
 
 int Vector::size() //Return the Vector Size
@@ -47,7 +51,7 @@ int Vector::capacity() //Return the Vector Capacity
 
 void Vector::push_back(int element) // ROLL IT BACK
 {
-  if (vec_size + 1 >= vec_capacity)
+  if (vec_size + 2 >= vec_capacity)
     reserve();
   int i = vec_size;
   while (i > element)
